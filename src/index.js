@@ -1,5 +1,6 @@
 import "../scss/main.scss";
 import * as Tone from "tone";
+import "../HF_Fav.png";
 
 let xs = [];
 let screenWidth = window.innerWidth;

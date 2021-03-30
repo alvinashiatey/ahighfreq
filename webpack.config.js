@@ -1,6 +1,8 @@
 // Generated using webpack-cli http://github.com/webpack-cli
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
@@ -12,9 +14,15 @@ module.exports = {
     open: true,
     host: "localhost",
   },
+  optimization: {
+    minimizer: [new TerserPlugin()],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "index.html",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "style.css",
     }),
 
     // Add your plugins here
@@ -29,21 +37,28 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          {
-            loader: "style-loader",
-            options: {
-              insert: "head", // insert style tag inside of <head>
-              injectType: "singletonStyleTag", // this is for wrap all your style in just one style tag
-            },
-          },
+          "style-loader",
           "css-loader",
           "resolve-url-loader",
           "sass-loader",
         ],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/,
-        type: "asset",
+        // ASSET LOADER
+        test: /\.(woff|woff2|ttf|eot)$/,
+        loader: "file-loader",
+      },
+      {
+        //IMAGE LOADER
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              esModule: false,
+            },
+          },
+        ],
       },
 
       // Add your rules for custom modules here
