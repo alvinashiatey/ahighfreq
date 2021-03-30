@@ -1,6 +1,5 @@
 import "../scss/main.scss";
 import * as Tone from "tone";
-import "../HF_Fav.png";
 
 let xs = [];
 let screenWidth = window.innerWidth;
@@ -40,16 +39,26 @@ animate();
 const trigger = document.querySelector("#wave");
 const synthA = new Tone.FMSynth().toDestination();
 const synthB = new Tone.AMSynth().toDestination();
+const notes = ["G2", "C2", "C3", "Eb3", "C4", "G3", "Bb3", "F2", "F#2"];
+
 let playing = false;
 trigger.addEventListener("click", () => {
   if (playing === false) {
     //play a note every quarter-note
     const loopA = new Tone.Loop((time) => {
-      synthA.triggerAttackRelease("C2", "8n", time);
+      synthA.triggerAttackRelease(
+        notes[Math.floor(Math.random() * notes.length)],
+        "4n",
+        time
+      );
     }, "4n").start(0);
     //play another note every off quarter-note, by starting it "8n"
     const loopB = new Tone.Loop((time) => {
-      synthB.triggerAttackRelease("C4", "16n", time);
+      synthB.triggerAttackRelease(
+        notes[Math.floor(Math.random() * notes.length)],
+        "4n",
+        time
+      );
     }, "4n").start("8n");
     // the loops start when the Transport is started
     Tone.Transport.start();

@@ -51,7 +51,7 @@ body {
   /*  Header Content */
   .header-content {
     height: 100%;
-    font-size: 3rem;
+    font-size: 2.2rem;
     letter-spacing: 0.1em;
   }
 
@@ -68,7 +68,7 @@ body {
     padding: 0 2em;
 
     p {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       line-height: 140%;
       @media (max-width: $mediaMinWidth) {
         font-size: 3rem;
