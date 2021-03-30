@@ -8,19 +8,32 @@
 
 body {
   font-family: "Xanh Mono", monospace;
+  padding: 1px;
   background-color: black;
   color: white;
-  font-size: 16px;
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   text-align: center;
   width: 100vw;
   height: 100vh;
-  padding-top: 0rem;
 
   ::selection {
     background: yellow; /* WebKit/Blink Browsers */
   }
   ::-moz-selection {
     background: yellow; /* Gecko Browsers */
+  }
+
+  .wrapper {
+    padding: 1px;
+    background: rgb(255, 255, 0);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 0, 1) 0%,
+      rgba(254, 254, 254, 0) 5%
+    );
+    width: 100%;
+    height: 100%;
+    clear: both;
   }
 
   /*  Links */
@@ -50,23 +63,22 @@ body {
 
   /*  Header Content */
   .header-content {
-    height: 100%;
+    height: 10vh;
     font-size: 2.2rem;
     letter-spacing: 0.1em;
-  }
-
-  h6 {
-    margin-top: 0.5em;
-    margin-bottom: 0.2em;
+    box-sizing: border-box;
+    h6 {
+      padding-top: 0.5em;
+    }
   }
 
   /*  Page Content */
 
   .main-content {
     text-align: center;
-    height: calc(100vh - 10vh) vh;
+    height: 80vh;
     padding: 0 2em;
-
+    margin: 0;
     p {
       font-size: 2.2rem;
       line-height: 140%;
@@ -78,14 +90,17 @@ body {
 
   .prompt {
     p {
-      margin-top: 2rem;
+      margin-top: 1rem;
+      box-sizing: border-box;
     }
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+    box-sizing: border-box;
   }
 
   .contact-prompt {
     p {
-      margin-bottom: 2rem;
+      margin-top: 1rem;
+      box-sizing: border-box;
     }
   }
 }
