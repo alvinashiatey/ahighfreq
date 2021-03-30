@@ -1,4 +1,4 @@
-import "../sass/main.scss";
+import "../scss/main.scss";
 import * as Tone from "tone";
 
 let xs = [];
